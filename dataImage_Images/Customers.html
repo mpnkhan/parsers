@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <body>
+        
+        <h3>Audit Results</h3>
+        
+        <p id="placeholder"></p>
+        
+        <script>
+            var rootObject = {
+  "_axKeyAllScreens" : [
+    {
+      "_axKeyDisplayBoundsXPx" : 0,
+      "_axKeyAllIssues" : [
+        {
+          "_axKeyElementRectInScreenshotHeight" : 21.042424242424239,
+          "_axKeyElementRectInScreenshotX" : 127.47878787878788,
+          "_axKeyShortDesc" : "Potentially inaccessible text",
+          "_axKeyLongDesc" : "This element appears to display text that should be represented using the accessibility API.",
+          "_axKeyErrorCode" : 1007,
+          "_axKeyElementRectInScreenshotWidth" : 27.042424242424239,
+          "_axKeyElementRectInScreenshotY" : 626.4787878787879,
+          "_axKeyImageThumbnail" : {
+            "_axKeyImageData" :"Customers\/9a5065baf725aba6a26d15ab8078fc2c.jpg",
+            "_axKeyImageWidth" : 27,
+            "_axKeyImageHeight" : 21
+          }
+        },
+        {
+          "_axKeyElementRectInScreenshotHeight" : 23.042424242424239,
+          "_axKeyElementRectInScreenshotX" : 38.478787878787877,
+          "_axKeyShortDesc" : "Potentially inaccessible text",
+          "_axKeyLongDesc" : "This element appears to display text that should be represented using the accessibility API.",
+          "_axKeyErrorCode" : 1007,
+          "_axKeyElementRectInScreenshotWidth" : 17.542424242424243,
+          "_axKeyElementRectInScreenshotY" : 138.47878787878795,
+          "_axKeyImageThumbnail" : {
+            "_axKeyImageData" :"Customers\/91fd189b6b01e3f72cacd963568ea9e8.jpg",
+            "_axKeyImageWidth" : 17,
+            "_axKeyImageHeight" : 23
+          }
+        },
+        {
+          "_axKeyElementRectInScreenshotHeight" : 24.042424242424239,
+          "_axKeyElementRectInScreenshotX" : 88.978787878787884,
+          "_axKeyShortDesc" : "Dynamic Text font sizes are unsupported",
+          "_axKeyLongDesc" : "User will not be able to change the font size of this element",
+          "_axKeyErrorCode" : 3001,
+          "_axKeyElementRectInScreenshotWidth" : 250.04242424242426,
+          "_axKeyElementRectInScreenshotY" : 131.47878787878795,
+          "_axKeyImageThumbnail" : {
+            "_axKeyImageData" :"Customers\/eea0341786db8ee20e3a5494dce0ebdf.jpg",
+            "_axKeyImageWidth" : 250,
+            "_axKeyImageHeight" : 24
+          }
+        },
+        {
+          "_axKeyElementRectInScreenshotHeight" : 23.042424242424239,
+          "_axKeyElementRectInScreenshotX" : 38.478787878787877,
+          "_axKeyShortDesc" : "Dynamic Text font sizes are unsupported",
+          "_axKeyLongDesc" : "User will not be able to change the font size of this element",
+          "_axKeyErrorCode" : 3001,
+          "_axKeyElementRectInScreenshotWidth" : 17.542424242424243,
+          "_axKeyElementRectInScreenshotY" : 138.47878787878795,
+          "_axKeyImageThumbnail" : {
+            "_axKeyImageData" :"Customers\/3f61a83178e095db294494b316b6a163.jpg",
+            "_axKeyImageWidth" : 17,
+            "_axKeyImageHeight" : 23
+          }
+        },
+        {
+          "_axKeyElementRectInScreenshotHeight" : 21.542424242424239,
+          "_axKeyElementRectInScreenshotX" : 88.978787878787884,
+          "_axKeyShortDesc" : "Dynamic Text font sizes are unsupported",
+          "_axKeyLongDesc" : "User will not be able to change the font size of this element",
+          "_axKeyErrorCode" : 3001,
+          "_axKeyElementRectInScreenshotWidth" : 250.04242424242426,
+          "_axKeyElementRectInScreenshotY" : 151.47878787878795,
+          "_axKeyImageThumbnail" : {
+            "_axKeyImageData" :"Customers\/9a996db822834b71f41070572ae14d92.jpg",
+            "_axKeyImageWidth" : 250,
+            "_axKeyImageHeight" : 21
+          }
+        }
+      ],
+      "_axKeyScreenshotRotation" : 0,
+      "_axKeyScreenshotScale" : 2,
+      "_axKeyDisplayBoundsHeightPx" : 667,
+      "_axKeyDisplayBoundsYPx" : 0,
+      "_axKeyDisplayBoundsWidthPx" : 375,
+      "_axKeyImageFull" : {
+        "_axKeyImageData" :"Customers\/9a10d54645d8e2525cd0b9b698c8ee66.jpg",
+        "_axKeyImageWidth" : 375,
+        "_axKeyImageHeight" : 667
+      },
+      "_axKeyScreenName" : "Screen1"
+    }
+  ]
+};
+
+
+
+processRootObject(rootObject);
+
+function appendText(text)
+{
+    document.getElementById("placeholder").innerHTML += text;
+}
+            function processIssue(auditIssue, issueIndex, screenIndex)
+            {
+                appendText("<HR>");
+                appendText("Issue Number: " + issueIndex + "<BR>");
+                appendText("Error code: " + auditIssue._axKeyErrorCode + "<BR>");
+                
+                var shortDesc = auditIssue._axKeyShortDesc;
+                if (shortDesc != null)
+                {
+                    appendText("Short Description: " + shortDesc + "<BR>");
+                }
+                
+                var longDesc = auditIssue._axKeyLongDesc;
+                if (longDesc != null)
+                {
+                    appendText("Long Description: " + longDesc + "<BR>");
+                }
+                
+                var elementText = auditIssue._axKeyElementText;
+                if (elementText != null)
+                {
+                    appendText("Element Text: " + elementText + "<BR>");
+                }
+                
+                if ( auditIssue._axKeyImageThumbnail != null && auditIssue._axKeyImageThumbnail._axKeyImageData != null )
+                {
+                    appendText("Thumbnail: <BR> <img src=\"" + auditIssue._axKeyImageThumbnail._axKeyImageData + "\"> <BR>");
+                    
+                    appendText("<button id=\"TOGGLE_FULLSCREEN_BUTTON_"+ screenIndex + "_" + issueIndex +"\" onclick=\"toggleFullScreenshot(" + screenIndex + "," + issueIndex +")\">Toggle Full Screenshot</button>");
+                    appendText("<div id=\"FULLSCREEN_IMAGE_"+ screenIndex + "_" + issueIndex +"\">");
+                }
+                appendText("<BR>");
+                appendText("<BR>");
+            }
+            
+            function toggleFullScreenshot(screenIndex, issueIndex)
+            {
+                var divIdentifier = "FULLSCREEN_IMAGE_"+ screenIndex + "_" + issueIndex;
+                var divElement = document.getElementById(divIdentifier);
+                
+                if (  divElement.style.display === '' )
+                {
+                    
+                    var screenObject = rootObject._axKeyAllScreens[screenIndex];
+                    var auditIssue = screenObject._axKeyAllIssues[issueIndex];
+                    var screenshotImageData = screenObject._axKeyImageFull._axKeyImageData;
+                    var screenshotWidth = screenObject._axKeyImageFull._axKeyImageWidth;
+                    var screenshotHeight = screenObject._axKeyImageFull._axKeyImageHeight;
+                    
+                    var svgText = "<svg id=fullScreenImage" + issueIndex +
+                    " width=" + screenshotWidth +
+                    " height=" + screenshotHeight + " >" +
+                    
+                    "<image x=0 y=0 width=" + screenshotWidth +
+                    " height=" + screenshotHeight +
+                    " xlink:href=\"" + screenshotImageData +
+                    "\"></image>" +
+                    
+                    "<rect x=" + auditIssue._axKeyElementRectInScreenshotX +
+                    " y=" + auditIssue._axKeyElementRectInScreenshotY +
+                    " width=" + auditIssue._axKeyElementRectInScreenshotWidth +
+                    " height=" + auditIssue._axKeyElementRectInScreenshotHeight +
+                    " stroke=blue fill=none stroke-width=5 stroke-opacity=1.0></rect>" +
+                    "</svg>";
+                    
+                    divElement.style.display = 'block'
+                    divElement.innerHTML = svgText;
+                }
+                else if ( divElement.style.display === 'block' )
+                {
+                    divElement.style.display = 'none';
+                }
+                else
+                {
+                    divElement.style.display = 'block'
+                }
+            }
+            
+            function processScreenObject(screenObject, screenIndex)
+            {
+                appendText("Screen:" + screenObject._axKeyScreenName + "<BR>");
+                
+                appendText("Fullscreen image:<img src=\"" + screenObject._axKeyImageFull._axKeyImageData + "\"> <BR>");
+                
+                
+                var allIssues = screenObject._axKeyAllIssues;
+                
+                for (var issueIndex in allIssues)
+                {
+                    processIssue(allIssues[issueIndex], issueIndex, screenIndex);
+                }
+            }
+            
+            function processRootObject(rootObject)
+            {
+                var allScreens = rootObject._axKeyAllScreens;
+                
+                for (var screenIndex in allScreens)
+                {
+                    processScreenObject(allScreens[screenIndex], screenIndex);
+                }
+            }
+            
+            </script>
+    </body>
+</html>

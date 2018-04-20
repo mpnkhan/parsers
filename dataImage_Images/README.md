@@ -1,0 +1,2 @@
+# Data Image urls to actual images
+The accessibility audit reports saved by XCode Accessibility Inspector tool is a single file with lot of data:image urls. They render very slow on Safari browser. This script will just convert those data images and creates a new file with actual images. Example is the audit file inside Customer folder (original one) and Customers.html creates outside this folder. 
